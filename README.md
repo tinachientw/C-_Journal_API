@@ -155,7 +155,7 @@ int journal_service();
 ## Code files
 
 | File tree | | | Functions |
-| ----------- | ----------- | ----------- | |
+| ----------- | ----------- | ----------- | ----------- |
 | journal | / include |/ client_api.h | client_api header file |
 | | | server_api.h | server_api header file |
 | | | journal.h | journal related functions header file |
