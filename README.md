@@ -28,14 +28,14 @@ The purpose of this project to assist in the creation of a new hypothetical Jour
 
 WebSocket is a computer communications protocol, providing full-duplex communication channels over a single TCP connection.To communicate and display Real-Time Data, WebSocket is one of the best choices. The journal API use websocket to communicate.
 
-<img src="Websocket.png" width="480" />
+<img src="doc/Websocket.png" width="480" />
 
 
 ## High Level System Design
 
 At a high level, the journal system needs multiple application servers to serve all these requests with load balancers in front of them for traffic distributions. On the backend, non-SQL databases can store all the new jornals and can support a huge number of reads and writes.
 
-<img src="higher_level_system_design.png" width="800" />
+<img src="doc/higher_level_system_design.png" width="800" />
 
 The system has neither database nor application server on this version. So I wrote two API, to demostrate how it works.
 
@@ -56,7 +56,7 @@ All the journal entries are stored in server in json format.
    - **entry_date.json**: stores all journal entries. Every date has a journal entires file. This file can provide the intermediate results while the final results are not available. The UI can use journal_id and user_id to get detail journal info(body of text).
    - **config.json**: stores how many journal already been generated and how many user registed.
 
-<img src="file.png" width="800" />
+<img src="doc/file.png" width="800" />
 
 
 ## API Founctions
