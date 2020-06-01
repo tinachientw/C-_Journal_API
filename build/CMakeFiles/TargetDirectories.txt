@@ -1,0 +1,7 @@
+/Users/tina/Documents/Tina_Doc/Job/Apple_proj/journal/build/CMakeFiles/rebuild_cache.dir
+/Users/tina/Documents/Tina_Doc/Job/Apple_proj/journal/build/CMakeFiles/client_api_test.dir
+/Users/tina/Documents/Tina_Doc/Job/Apple_proj/journal/build/CMakeFiles/edit_cache.dir
+/Users/tina/Documents/Tina_Doc/Job/Apple_proj/journal/build/CMakeFiles/server_api_test.dir
+/Users/tina/Documents/Tina_Doc/Job/Apple_proj/journal/build/CMakeFiles/client_api_test_multi_user.dir
+/Users/tina/Documents/Tina_Doc/Job/Apple_proj/journal/build/CMakeFiles/client_api.dir
+/Users/tina/Documents/Tina_Doc/Job/Apple_proj/journal/build/CMakeFiles/server_api.dir

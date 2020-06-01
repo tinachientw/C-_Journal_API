@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libserver_api.a  CMakeFiles/server_api.dir/src/server_api.cpp.o CMakeFiles/server_api.dir/src/utils.cpp.o CMakeFiles/server_api.dir/src/journal.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libserver_api.a

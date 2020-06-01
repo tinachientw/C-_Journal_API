@@ -1,0 +1,14 @@
+[
+    {
+        "body": "body_1",
+        "date": 1590994110,
+        "journal_id": 1,
+        "title": "title_1"
+    },
+    {
+        "body": "body_2",
+        "date": 1590994110,
+        "journal_id": 2,
+        "title": "title_2"
+    }
+]
