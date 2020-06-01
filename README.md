@@ -348,7 +348,7 @@ I worte a client test program `./client_api_test_multi_user` for multi-user test
 
 Cause the communication protocal is WebSocket. It can support real time access, means each API function will create socket to do the handshake then release the resource. So the deadlock is prevented. But if there's a large amount of users, the message queue will be too long. To sove this program, we can either use multithreading or add more application servers.
 
-Cause user may be in different time zone, so the data stored in server used the UTC time zoom. Client app can change the time back to local time accordingly.
+Cause user may be in different time zone, so the data stored in server used the UTC time zone. Client app can change the time back to local time accordingly.
 
 ## Points of failure & Areas of Improvement
 
