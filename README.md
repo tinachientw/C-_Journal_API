@@ -286,13 +286,13 @@ The `*.json` files.
 [
     {
         "body": "body_1",
-        "date": 1590960583,
+        "date": "2020-6-1T9:16:19Z",
         "journal_id": 1,
         "title": "title_1"
     },
     {
         "body": "body_2",
-        "date": 1590960584,
+        "date": "2020-6-1T9:16:19Z",
         "journal_id": 2,
         "title": "title_2"
     }
@@ -304,13 +304,13 @@ The `*.json` files.
 [
     {
         "body": "mod body_3",
-        "date": 1590960584,
+        "date": "2020-6-1T9:16:19Z",
         "journal_id": 3,
         "title": "mod title_3"
     },
     {
         "body": "body_4",
-        "date": 1590960584,
+        "date": "2020-6-1T9:16:19Z",
         "journal_id": 4,
         "title": "title_4"
     }

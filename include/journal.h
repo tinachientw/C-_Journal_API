@@ -59,7 +59,7 @@ class CJournal{
 public:
 	static int journalCount;
 
-	CJournal(time_t t = time(0), string title = "", string body = "") {
+	CJournal(string t = "", string title = "", string body = "") {
 		journalId_ = ++journalCount;
 		time_ = t;
 		title_ = title;
@@ -74,7 +74,7 @@ public:
 	static int  modJournal(int userId, int journalId, string title, string body);
 private:
 	int 	journalId_;
-	time_t 	time_;
+	string 	time_;
 	string 	title_;
 	string 	body_;
 };
@@ -99,6 +99,8 @@ private:
 };
 
 string timeToUTCdate(time_t t);
+
+string timeToUTCdatetime(time_t t);
 
 time_t UTCdateToTime(string UTCdate);
 

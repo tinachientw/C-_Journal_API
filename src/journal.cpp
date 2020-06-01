@@ -10,7 +10,8 @@ CConfig gConfig(CJournal::journalCount, CUser::userCount);
 
 int CJournal::addJournal(int userId, string title, string body) {
 	//create new journal
-	CJournal jo(time(0), title, body);
+	string t = timeToUTCdatetime(time(0));
+	CJournal jo(t, title, body);
 	json jAdd;
 	jAdd[0]["journal_id"] = jo.journalId_;
 	jAdd[0]["date"] = jo.time_;
@@ -37,7 +38,7 @@ int CJournal::addJournal(int userId, string title, string body) {
 		oFile << std::setw(4) << jAdd << std::endl;
 
 	//update related data
-	CJournalEntry entry(timeToUTCdate(jo.time_), jo.journalId_, userId, title);
+	CJournalEntry entry(t.substr(0,t.find_first_of("T")), jo.journalId_, userId, title);
 	CJournalEntry::addJournalEntry(entry);
 
 	CConfig::setConfig();
@@ -54,7 +55,7 @@ json CJournal::getJournals(int userId) {
 		json i = it.value();
 		#if DEBUG
 		std::cout << i["journal_id"].get<int>() << "\n";
-		std::cout << i["date"].get<time_t>() << "\n";
+		std::cout << i["date"].get<std::string>() << "\n";
 		std::cout << i["title"].get<std::string>() << "\n";
 		std::cout << i["body"].get<std::string>() << "\n";
 		#endif
@@ -91,7 +92,7 @@ json CJournal::getJournal(int userId, int journalId) {
 			jResult.push_back(*it);
 			#if DEBUG
 			std::cout << i["journal_id"].get<int>() << "\n";
-			std::cout << i["date"].get<time_t>() << "\n";
+			std::cout << i["date"].get<std::string>() << "\n";
 			std::cout << i["title"].get<std::string>() << "\n";
 			std::cout << i["body"].get<std::string>() << "\n";
 			#endif
@@ -111,8 +112,8 @@ int CJournal::delJournal(int userId, int journalId) {
 	for (json::iterator it = j.begin(); it != j.end(); ++it) {
 		json i = it.value();
 		if (i["journal_id"]== journalId) {
-			time_t t = i["date"].get<time_t>();
-			string date = timeToUTCdate(t);
+			string t = i["date"].get<std::string>();
+			string date = t.substr(0,t.find_first_of("T"));
 			CJournalEntry::delJournalJournalEntry(date, journalId);
 		}else{
 			jResult.push_back(*it);
@@ -141,7 +142,7 @@ int CJournal::modJournal(int userId, int journalId, string title, string body) {
 			//create updated journal
 			json jAdd;
 			jAdd["journal_id"] = journalId;
-			jAdd["date"] = time(0);
+			jAdd["date"] = timeToUTCdatetime(time(0));
 			jAdd["title"] = title;
 			jAdd["body"] = body;
 			jResult.push_back(jAdd);
@@ -310,6 +311,23 @@ string timeToUTCdate(time_t t){
    			  to_string(gmtm->tm_mday);
 
    	return UTCdate;
+}
+
+string timeToUTCdatetime(time_t t){
+	string UTCdatetime = ""; // YYYY-MM-DD
+
+	// convert t to tm struct for UTC
+	tm *gmtm = gmtime(&t);
+
+	//"%Y-%m-%dT%H:%M:%SZ"
+   	UTCdatetime = 	to_string(1900 + gmtm->tm_year) + "-" + \
+   			  		to_string(1 + gmtm->tm_mon) + "-" + \
+   			  		to_string(gmtm->tm_mday) + "T" +\
+   			  		to_string(1 + gmtm->tm_hour) + ":" +\
+   			  		to_string(1 + gmtm->tm_min) + ":" +\
+   			  		to_string(1 + gmtm->tm_sec) + "Z";
+
+   	return UTCdatetime;
 }
 
 time_t UTCdateToTime(string UTCdate) {
